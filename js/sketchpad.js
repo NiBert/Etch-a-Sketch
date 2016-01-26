@@ -1,10 +1,10 @@
-n = 13;
+n = 24;
 fade = false
 
 $(document).ready(function() {
   buildGrid(n);
-  $('.square').width((800.0/n)-4.0);
-  $('.square').height((800.0/n)-4.0);
+  $('.square').width((800.0/n)-2.0);
+  $('.square').height((800.0/n)-2.0);
   $('.square').mouseenter(color);
   if(fade === true) {
     $('.square').mouseleave();

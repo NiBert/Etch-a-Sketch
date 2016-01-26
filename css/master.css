@@ -1,7 +1,8 @@
 body {
-  background-color: black;
+  background-color: #31363B;
 }
 
+/* Grid */
 .square {
   background-color: white;
   float: right;
@@ -9,7 +10,7 @@ body {
 }
 
 .wrapper {
-  margin: 100px auto;
+  margin: 20px auto;
   padding: 0;
   width: 803px;
   height: 803px;
@@ -17,4 +18,46 @@ body {
 
 .colored {
   background-color: #076591;
+}
+
+/* Option panel */
+.options {
+  width: 800px;
+  height: 80px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: inherit;
+}
+
+.radio {
+  display: inline-block;
+  margin: 30px 25px 0 0;
+  border: 1px solid black;
+  padding: 5px 10px 5px 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+#size {
+  padding:7px 15px 4px 0;
+  float: right;
+  margin-top: 30px;
+  text-align: right;
+  font-size: 18px;
+  width: 150px;
+  height: 20px;
+  border-radius: 5px;
+}
+
+/* Clear */
+#clear {
+  height: 25px;
+  width: 800px;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 10px;
 }
