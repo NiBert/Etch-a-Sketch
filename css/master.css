@@ -16,8 +16,12 @@ body {
   height: 803px;
 }
 
-.colored {
+.blue {
   background-color: #076591;
+}
+
+.pink {
+  background-color: #9F40A0;
 }
 
 /* Option panel */
@@ -36,6 +40,7 @@ body {
   padding: 5px 10px 5px 5px;
   background-color: white;
   border-radius: 5px;
+  border: 2px #31363B solid;
 }
 
 #size {
@@ -47,6 +52,12 @@ body {
   width: 150px;
   height: 20px;
   border-radius: 5px;
+  display: inline-block;
+}
+
+#fade {
+  float: right;
+  display: inline-block;
 }
 
 /* Clear */
@@ -60,4 +71,19 @@ body {
   font-size: 18px;
   font-weight: bold;
   padding-top: 10px;
+  border: 2px #31363B solid;
 }
+
+/* Hover and active borders */
+.radio:hover, #clear:hover, #size:hover {
+  border-color: #076591;
+}
+
+.radio:active, #clear:active, #size:active {
+  background-color: #F4F4F4;
+  border-color: #9F40A0;
+ }
+
+ #clear:hover {
+   cursor: pointer;
+ }
