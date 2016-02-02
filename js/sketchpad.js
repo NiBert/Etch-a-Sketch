@@ -1,37 +1,47 @@
-var n = 16;
-var fade = false;
+var gridSize = 32;
 var mouseDown = 0;
-var option = "1";
 
 $(document).ready(function() {
-  buildGrid(n);
+  buildGrid(gridSize);
+  // Listener for options and function calls:
+  $('#color').change(color);
+  $('#random').change(randomColor);
+  //$('#opacity').change(adding);
+  $('#fadebox').click(fading);
+  // Listener for mouseDown Events:
   onmousedown = function() {mouseDown = 1;}
   onmouseup = function() {mouseDown = 0;}
 });
 
 function buildGrid(n) {
-  for (var i = 0; i < n*n; i++) {
+  // Add .square div elements to .wrapper:
+  for (var i = 0; i < gridSize*gridSize; i++) {
     $('.wrapper').append('<div class="square"></div>');
   }
+  // Calculate and set size of each .square:
   $('.square').width((800.0/n)-2.0);
   $('.square').height((800.0/n)-2.0);
-  if(option === "1") {color();}
-  if(option === "2") {randomColor();}
-  if(option === "3") {adding();}
-  if(fade) {fade();}
+  // Call function depending on which radio is checked:
+  if($("input[name='option']:checked").attr('id') === "color") {color();}
+  if($("input[name='option']:checked").attr('id') === "random") {randomColor();}
+  if($("input[name='option']:checked").attr('id') === "opacity") {adding();}
 }
 
+// Option 1: Color the .square in one color
 function color() {
   $('.square').mouseenter(function() {
-    if(mouseDown === 0) {
+    // Blue if mouse not pressed
+    if(!mouseDown) {
       $(this).css('background-color', '#076591');
     }
+    // Pink if mouse pressed
     else {
       $(this).css('background-color', '#9F40A0');
     }
   });
 }
 
+// Option 2: Color the .square in a random color
 function randomColor() {
   $('.square').mouseenter(function() {
     $(this).css('background-color', getRandomColor());
@@ -39,8 +49,10 @@ function randomColor() {
 }
 
 function getRandomColor() {
+  // Split 16 possible letters to an array:
   var letters = '0123456789ABCDEF'.split('');
   var color = '#';
+  // Appand 6 random letters to color:
   for (var i = 0; i < 6; i++ ) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -48,24 +60,18 @@ function getRandomColor() {
 }
 
 function fading() {
-  if($('#fadebox').prop('checked')) {
-    $('.square').mouseenter(function() {$(this).fadeTo(100,0);});
-    $('.square').mouseleave(function() {
-      $(this).fadeTo(900,1);
-    });
-  }
-  else {
-    $('.square').mouseenter(function() {$(this).stop(true);});
-    $('.square').mouseleave(function() {
-      $(this).stop(true);
-    });
-  }
+  // Add .fade class with transition to get fade effect on .squares:
+  $('.square').toggleClass('fade');
 }
 
 function clearGrid() {
+  // Delete all elements in the .wrapper:
   $('.wrapper').empty();
-  n = $('#size').val();
-  option = $("input[name='option']:checked").val();
-  if(n === "") {n = 16};
+  // Get the new grid size:
+  gridSize = $('#size').val();
+  // In case no grid size was entered:
+  if(n === "") {n = 32};
   buildGrid(n);
+  // Check if fade checkbox is checked:
+  if($('#fadebox').prop('checked')) {fading();}
 }
