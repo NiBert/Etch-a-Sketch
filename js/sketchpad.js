@@ -65,13 +65,18 @@ function fading() {
 }
 
 function clearGrid() {
-  // Delete all elements in the .wrapper:
-  $('.wrapper').empty();
   // Get the new grid size:
   gridSize = $('#size').val();
   // In case no grid size was entered:
-  if(n === "") {n = 32};
-  buildGrid(n);
-  // Check if fade checkbox is checked:
-  if($('#fadebox').prop('checked')) {fading();}
+  if(gridSize === "") {gridSize = 32};
+  // Catch unsuitably grid Size:
+  if(gridSize < 1 || gridSize > 100) {
+    alert("Do you want to crash your PC?\nYou better choose a size between 1-100!")
+  } else {
+    // Delete all elements in the .wrapper:
+    $('.wrapper').empty();
+    buildGrid(gridSize);
+    // Check if fade checkbox is checked:
+    if($('#fadebox').prop('checked')) {fading();}
+  }
 }
