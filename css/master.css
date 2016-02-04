@@ -1,12 +1,17 @@
 body {
-  background-color: #E5CB37;
+  background-color: #E0E0E0;
 }
 
 /* Grid */
 .square {
-  background-color: white;
+  background-color: black;
   float: right;
-  margin: 2px 2px 0 0;
+  margin: 0;
+}
+
+.blink {
+  background-color: red;
+  transition: background 0.05s ease-in-out;
 }
 
 .fade {
@@ -14,13 +19,14 @@ body {
 }
 
 .wrapper {
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
   padding: 0;
   width: 803px;
   height: 803px;
   border-radius: 5px;
-  border: 2px #31363B solid;
-
+  border: 2px black solid;
+  background-color: black;
+  padding: 1px 1px 1px 1px;
 }
 
 /* Option panel */
@@ -28,7 +34,6 @@ body {
   width: 800px;
   height: 80px;
   margin: 0 auto;
-  margin-top: 10px;
   background-color: inherit;
 }
 
@@ -55,7 +60,7 @@ body {
   border: 2px #31363B solid;
 }
 
-#fade {
+#fade, #surprise {
   float: right;
   display: inline-block;
 }
