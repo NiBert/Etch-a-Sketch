@@ -50,6 +50,7 @@ function clearGrid() {
     buildGrid(gridSize);
     // Check if fade checkbox is checked:
     if($('#fadebox').prop('checked')) {fading();}
+    // Can u guess my favourite number? ;-)
     if(gridSize === "7") {
       blinking = true;
       blink('.square');
@@ -83,7 +84,12 @@ function randomColor() {
 
 function fading() {
   // Add .fade class with transition to get fade effect on .squares:
-  $('.square').toggleClass('fade');
+  // $('.square').toggleClass('fade');  <-- Is not working in htmlpreview ...
+  if($('#fadebox').is(':checked')) {
+      $('.square').css('transition', 'background 1.8s linear');
+    } else {
+      $('.square').css('transition', 'background 0s linear');
+    }
 }
 
 // Suprise: Lower opacity each time the mouse enters the .square
